@@ -42,6 +42,10 @@ python manage.py createsuperuser
 6. **Запуск сервера:**  
   
 python manage.py runserver  
+
+**Для запуска тестов:**   
+  
+python manage.py test  
   
 ---
 ## Краткое руководство по использованию
