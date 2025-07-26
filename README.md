@@ -23,7 +23,8 @@ cd DDS
 2. **Создание и активация виртуального окружения:**  
   
 python -m venv venv  
-.\venv\Scripts\activate  
+.\venv\Scripts\activate       # Для Windows   
+source venv/Scripts/activate  # Для Linux  
   
 3. **Установка зависимостей**  
   
