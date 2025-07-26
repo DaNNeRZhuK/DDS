@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление справочниками</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-4">
+    <h2 class="mb-4">Справочники</h2>
+    <a href="{% url 'transaction_list' %}" class="btn btn-secondary">← Назад</a>
+
+    <h4>Статусы <a href="{% url 'status_add' %}" class="btn btn-sm btn-success">+ Добавить</a></h4>
+    <table class="table table-bordered table-sm bg-white">
+        <thead><tr><th>Название</th><th></th></tr></thead>
+        <tbody>
+            {% for s in statuses %}
+            <tr>
+                <td>{{ s.name }}</td>
+                <td class="text-end">
+                    <a href="{% url 'status_edit' s.id %}" class="btn btn-sm btn-outline-primary">Изменить</a>
+                    <a href="{% url 'status_delete' s.id %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="2" class="text-muted text-center">Нет статусов</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr class="my-4">
+    <h4>Типы операций <a href="{% url 'type_add' %}" class="btn btn-sm btn-success">+ Добавить</a></h4>
+    <table class="table table-bordered table-sm bg-white">
+      <thead><tr><th>Название</th><th></th></tr></thead>
+      <tbody>
+        {% for t in types %}
+        <tr>
+            <td>{{ t.name }}</td>
+            <td class="text-end">
+                <a href="{% url 'type_edit' t.id %}" class="btn btn-sm btn-outline-primary">Изменить</a>
+                <a href="{% url 'type_delete' t.id %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="2" class="text-muted text-center">Нет типов</td></tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+    <hr class="my-4">
+    <h4>Категории <a href="{% url 'category_add' %}" class="btn btn-sm btn-success">+ Добавить</a></h4>
+    <table class="table table-bordered table-sm bg-white">
+      <thead><tr><th>Название</th><th>Тип</th><th></th></tr></thead>
+      <tbody>
+        {% for c in categories %}
+        <tr>
+            <td>{{ c.name }}</td>
+            <td>{{ c.type.name }}</td>
+            <td class="text-end">
+                <a href="{% url 'category_edit' c.id %}" class="btn btn-sm btn-outline-primary">Изменить</a>
+                <a href="{% url 'category_delete' c.id %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3" class="text-muted text-center">Нет категорий</td></tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+  <hr class="my-4">
+  <h4>Подкатегории <a href="{% url 'subcategory_add' %}" class="btn btn-sm btn-success">+ Добавить</a></h4>
+  <table class="table table-bordered table-sm bg-white">
+    <thead><tr><th>Название</th><th>Категория</th><th>Тип</th><th></th></tr></thead>
+    <tbody>
+        {% for sc in subcategories %}
+        <tr>
+            <td>{{ sc.name }}</td>
+            <td>{{ sc.category.name }}</td>
+            <td>{{ sc.category.type.name }}</td>
+            <td class="text-end">
+                <a href="{% url 'subcategory_edit' sc.id %}" class="btn btn-sm btn-outline-primary">Изменить</a>
+                <a href="{% url 'subcategory_delete' sc.id %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4" class="text-muted text-center">Нет подкатегорий</td></tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+
+</div>
+</body>
+</html>
